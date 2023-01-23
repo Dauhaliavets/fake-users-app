@@ -1,10 +1,17 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Table } from 'react-bootstrap'
 import { TableColumnTitles } from '../../constants/tableColumnTitles'
 import { Context } from '../../context/Context'
+import { useGenerator } from '../../hooks/useGenerator'
 
 function UsersTable() {
-  const { users } = useContext(Context)
+  const { users, seed, locale } = useContext(Context)
+
+  const { generateCountUsers } = useGenerator()
+
+  useEffect(() => {
+    generateCountUsers(20)
+  }, [seed, locale])
 
   return (
     <Table responsive striped bordered hover size='sm'>

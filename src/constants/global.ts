@@ -1,0 +1,4 @@
+const DEFAULT_LOCALE = 'de-DE'
+const DEFAULT_SEED = ''
+
+export { DEFAULT_LOCALE, DEFAULT_SEED }
