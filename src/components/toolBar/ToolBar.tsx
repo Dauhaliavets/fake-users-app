@@ -3,15 +3,18 @@ import { Col, Form } from 'react-bootstrap'
 import { Context } from '../../context/Context'
 
 function ToolBar() {
-  const { seed, setSeed, locale, setLocale } = useContext(Context)
+  const { seed, setSeed, locale, setLocale, errorChance, setErrorChance } = useContext(Context)
 
   const handleChangeSeed = (e: ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault()
     setSeed(e.target.value)
   }
 
   const handleChangeLocale = (e: ChangeEvent<HTMLSelectElement>) => {
     setLocale(e.target.value)
+  }
+
+  const handleChangeErrorChance = (e: ChangeEvent<HTMLInputElement>) => {
+    setErrorChance(Number(e.target.value))
   }
 
   return (
@@ -20,7 +23,7 @@ function ToolBar() {
         <Form.Group className='mb-3' controlId='seed'>
           <Form.Label>Seed</Form.Label>
           <Form.Control
-            type='text'
+            type='number'
             placeholder='Enter your seed number'
             value={seed}
             onChange={handleChangeSeed}
@@ -28,8 +31,22 @@ function ToolBar() {
         </Form.Group>
       </Col>
       <Col>
-        <Form.Label>Error probability</Form.Label>
-        <Form.Range min={'0'} max={'10'} step={'0.5'} />
+        <Form.Group>
+          <Form.Label>Error probability</Form.Label>
+          <Form.Range
+            min={'0'}
+            max={'10'}
+            step={'0.5'}
+            value={errorChance}
+            onChange={handleChangeErrorChance}
+          />
+          <Form.Control
+            type='number'
+            placeholder='Enter error probability'
+            value={errorChance}
+            onChange={handleChangeErrorChance}
+          />
+        </Form.Group>
       </Col>
       <Col>
         <Form.Label>Localizations</Form.Label>

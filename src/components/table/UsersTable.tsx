@@ -5,13 +5,13 @@ import { Context } from '../../context/Context'
 import { useGenerator } from '../../hooks/useGenerator'
 
 function UsersTable() {
-  const { users, seed, locale } = useContext(Context)
+  const { users, seed, locale, errorChance } = useContext(Context)
 
   const { generateCountUsers } = useGenerator()
 
   useEffect(() => {
     generateCountUsers(20)
-  }, [seed, locale])
+  }, [seed, locale, errorChance])
 
   return (
     <Table responsive striped bordered hover size='sm'>

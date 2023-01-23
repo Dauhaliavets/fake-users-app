@@ -6,8 +6,10 @@ interface IContext {
   users: IUser[]
   seed: string
   locale: string
+  errorChance: number
   setUsers: Dispatch<SetStateAction<IUser[]>>
   setSeed: Dispatch<SetStateAction<string>>
   setLocale: Dispatch<SetStateAction<string>>
+  setErrorChance: Dispatch<SetStateAction<number>>
 }
 export type { IContext }
