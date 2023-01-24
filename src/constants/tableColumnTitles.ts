@@ -1,1 +1,1 @@
-export const TableColumnTitles = ['ID', 'Seed', 'Full name', 'Address', 'Phone']
+export const TableColumnTitles = ['Index', 'Random identifier', 'Full name', 'Address', 'Phone']
