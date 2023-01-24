@@ -5,7 +5,7 @@ import { useContext } from 'react'
 import { MIN_SEED_VALUE, MAX_SEED_VALUE } from '../constants/global.ts'
 
 const useGenerator = () => {
-  const { seed, locale, errorChance, setUsers, setSeed } = useContext(Context)
+  const { users, seed, locale, errorChance, setUsers, setSeed } = useContext(Context)
   const fakerator = Fakerator(locale)
 
   const getRoundedErrorChance = () => {
@@ -80,7 +80,7 @@ const useGenerator = () => {
       newUsers.push(newUser)
     }
 
-    setUsers(newUsers)
+    setUsers([...users, ...newUsers])
   }
 
   const generateRandomSeed = () => {

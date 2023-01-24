@@ -1,10 +1,12 @@
 import React, { ChangeEvent, useContext } from 'react'
+import { CSVLink } from 'react-csv'
 import { Button, Col, Form } from 'react-bootstrap'
 import { Context } from '../../context/Context'
 import { useGenerator } from '../../hooks/useGenerator'
 
 function ToolBar() {
-  const { seed, setSeed, locale, setLocale, errorChance, setErrorChance } = useContext(Context)
+  const { users, seed, setSeed, locale, setLocale, errorChance, setErrorChance } =
+    useContext(Context)
   const { generateRandomSeed } = useGenerator()
 
   const handleChangeSeed = (e: ChangeEvent<HTMLInputElement>) => {
@@ -59,7 +61,7 @@ function ToolBar() {
           />
         </Form.Group>
       </Col>
-      <Col>
+      <Col className='ju'>
         <Form.Label>Localizations</Form.Label>
         <Form.Select
           aria-label='Default select example'
@@ -72,6 +74,11 @@ function ToolBar() {
           <option value='it-IT'>Italian</option>
           <option value='pl-PL'>Polish</option>
         </Form.Select>
+        <CSVLink data={users} filename={'fakeUsers.csv'}>
+          <Button variant='warning' className='mt-2'>
+            Export Users
+          </Button>
+        </CSVLink>
       </Col>
     </>
   )
