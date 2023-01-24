@@ -55,7 +55,7 @@ const useGenerator = () => {
     return oString
   }
 
-  const generateCountUsers = (count) => {
+  const createUsers = (count) => {
     fakerator.seed(Number(seed))
     const generatorSeed = seedrandom.tychei(seed)
     const newUsers = []
@@ -80,18 +80,27 @@ const useGenerator = () => {
       newUsers.push(newUser)
     }
 
-    setUsers([...users, ...newUsers])
+    return newUsers
   }
 
   const generateRandomSeed = () => {
-    const fakerator = Fakerator()
     const newSeed = fakerator.random.number(MIN_SEED_VALUE, MAX_SEED_VALUE)
-
     setSeed(String(newSeed))
   }
 
+  const generateFirstUsers = () => {
+    const newUsers = createUsers(20)
+    setUsers(newUsers)
+  }
+
+  const generateNextUsers = () => {
+    const newUsers = createUsers(10)
+    setUsers([...users, ...newUsers])
+  }
+
   return {
-    generateCountUsers,
+    generateFirstUsers,
+    generateNextUsers,
     generateRandomSeed,
   }
 }

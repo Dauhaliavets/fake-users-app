@@ -61,7 +61,7 @@ function ToolBar() {
           />
         </Form.Group>
       </Col>
-      <Col className='ju'>
+      <Col>
         <Form.Label>Localizations</Form.Label>
         <Form.Select
           aria-label='Default select example'
@@ -74,7 +74,7 @@ function ToolBar() {
           <option value='it-IT'>Italian</option>
           <option value='pl-PL'>Polish</option>
         </Form.Select>
-        <CSVLink data={users} filename={'fakeUsers.csv'}>
+        <CSVLink data={users} filename={'fakeUsers.csv'} separator=';'>
           <Button variant='warning' className='mt-2'>
             Export Users
           </Button>
